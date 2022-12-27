@@ -1,4 +1,4 @@
-## Automating the following steps is not considered a best practise. However, you can execute them manually with the root user.
+## Automating the following steps is not considered a best practice. However, you can execute them manually with the root user.
 ## You should have created a user named 'vagrant'.
 
 Upgrade all installed packages:
