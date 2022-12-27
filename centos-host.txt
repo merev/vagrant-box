@@ -1,54 +1,54 @@
 ## Automating the following steps is not considered a best practice. However, you can execute them manually with the root user.
 ## You should have created a user named 'vagrant'.
 
-Upgrade all installed packages:
+# Upgrade all installed packages:
 dnf upgrade -y
 
-Add new packages if you see fit. For example, install at least these (they are needed for building the VirtualBox modules):
+# Add new packages if you see fit. For example, install at least these (they are needed for building the VirtualBox modules):
 dnf install -y kernel-devel gcc make tar bzip2 wget elfutils-libelf-devel
 
-Insert the VirtualBox Add-ons media.
+# Insert the VirtualBox Add-ons media.
 
-Mount the VirtualBox Add-ons media and install them:
+# Mount the VirtualBox Add-ons media and install them:
 mount /dev/sr0 /mnt
 /mnt/VBoxLinuxAdditions.run
 
-Reboot the system:
+# Reboot the system:
 reboot
 
-Add the vagrant user to the vboxsf group:
+# Add the vagrant user to the vboxsf group:
 usermod -aG vboxsf vagrant
 
-Set the GRUB waiting time to 0 (this will make our machine boot faster):
+# Set the GRUB waiting time to 0 (this will make our machine boot faster):
 vi /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg
 
-Add the vagrant user to the sudoers list and allow it to sudo without entering password:
+# Add the vagrant user to the sudoers list and allow it to sudo without entering password:
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/vagrant
 
-Create a folder to store the insecure key:
+# Create a folder to store the insecure key:
 mkdir -m 0700 -p /home/vagrant/.ssh
 
-Install the vagrant insecure key:
+# Install the vagrant insecure key:
 wget --no-check-certificate https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub -O /home/vagrant/.ssh/authorized_keys
 
-Change the permissions of the key:
+# Change the permissions of the key:
 chmod 0600 /home/vagrant/.ssh/authorized_keys
 
-Clean up the package cache:
+# Clean up the package cache:
 dnf clean all
 
-Make sure that the hard disk is aligned:
+# Make sure that the hard disk is aligned:
 dd if=/dev/zero of=/EMPTY bs=1M status=progress
 rm -f /EMPTY
 
-Do not forget to eject (Optical Drives > Remove disk from virtual drive) the additions media or any other media that may be still attached to the machine.
+# Do not forget to eject (Optical Drives > Remove disk from virtual drive) the additions media or any other media that may be still attached to the machine.
 
 #################################################################
 
-Create a folder on the host to store the box.
+# Create a folder on the host to store the box.
 
-In a terminal session, navigate to the folder created earlier.
+# In a terminal session, navigate to the folder created earlier.
 
-While the VM is still running, build the box by executing:
+# While the VM is still running, build the box by executing:
 vagrant package --base <VM name>
