@@ -14,9 +14,7 @@ dnf install -y tree curl git nano jq
 setenforce permissive
 sed -i 's\=enforcing\=permissive\g' /etc/sysconfig/selinux
 
-# Insert the VirtualBox Add-ons media.
-
-# Mount the VirtualBox Add-ons media and install them:
+# Mount (Devices > Insert Guest Additions image) the VirtualBox Add-ons media and install them:
 mount /dev/sr0 /mnt
 /mnt/VBoxLinuxAdditions.run
 
