@@ -10,6 +10,10 @@ dnf install -y kernel-devel gcc make tar bzip2 wget elfutils-libelf-devel
 # Add some additional packeges that would be useful:
 dnf install -y tree curl git nano jq
 
+# Stop SE Linux
+setenforce permissive
+sed -i 's\=enforcing\=permissive\g' /etc/sysconfig/selinux
+
 # Insert the VirtualBox Add-ons media.
 
 # Mount the VirtualBox Add-ons media and install them:
