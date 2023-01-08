@@ -7,6 +7,9 @@ dnf upgrade -y
 # Add new packages if you see fit. For example, install at least these (they are needed for building the VirtualBox modules):
 dnf install -y kernel-devel gcc make tar bzip2 wget elfutils-libelf-devel
 
+# Add some additional packeges that would be useful:
+dnf install -y tree curl git nano jq
+
 # Insert the VirtualBox Add-ons media.
 
 # Mount the VirtualBox Add-ons media and install them:
