@@ -9,7 +9,7 @@ apt-get install -y gcc make perl
 
 # Insert the VirtualBox Add-ons media.
 
-# Mount the VirtualBox Add-ons media and install them:
+# Mount (Devices > Insert Guest Additions image) the VirtualBox Add-ons media and install them:
 mount /dev/sr0 /mnt
 /mnt/VBoxLinuxAdditions.run
 
