@@ -39,6 +39,7 @@ wget --no-check-certificate https://raw.github.com/mitchellh/vagrant/master/keys
 
 # Change the permissions of the key:
 chmod 0600 /home/vagrant/.ssh/authorized_keys
+chown -R vagrant: /home/vagrant
 
 # Clean up the package cache:
 dnf clean all
